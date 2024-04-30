@@ -1,10 +1,5 @@
-#!/bin/bash
-
-# Activate Pipenv virtual environment
-source Pipenv/bin/activate
-
-# Install dependencies from Pipfile
 pipenv install --system
+#!/bin/bash
 
 # Collect static files (adjust command as needed)
 python3 manage.py collectstatic
