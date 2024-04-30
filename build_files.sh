@@ -1,8 +1,7 @@
-pipenv install --system
-#!/bin/bash
+# Install dependencies from Pipfile.lock
+pip install --no-cache-dir pipenv
+pipenv install --deploy --ignore-pipfile || exit 1
 
-# Collect static files (adjust command as needed)
-python3 manage.py collectstatic
-
-# Run Django application (adjust command as needed)
-python3 wsgi.py
+# Run any additional build steps if needed
+# For example, collect static files
+pipenv run python manage.py collectstatic || exit 1
