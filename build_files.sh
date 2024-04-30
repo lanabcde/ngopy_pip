@@ -1,3 +1,5 @@
-pipenv install --system
-python3 manage.py collectstatic  # Kumpulkan file statis
-python3 wsgi.py  # Jalankan server WSGI Django
+pipenv install --deploy --ignore-pipfile
+
+# Run any additional build steps if needed
+# For example, collect static files
+python manage.py collectstatic
