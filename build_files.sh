@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# Aktifkan lingkungan virtual
-# Pastikan bahwa Anda telah mengatur PIPENV_ACTIVE sebelumnya
-# Misalnya, dengan menjalankan "pipenv shell" sebelumnya
-if [ -z "$PIPENV_ACTIVE" ]; then
-    echo "Error: Pipenv environment tidak aktif. aktifkan sekarang..."
-    pipenv shell || exit 1
-fi
+# Activate Pipenv virtual environment
+source Pipenv/bin/activate
 
-# Install dependensi dari Pipfile.lock
-pipenv install --deploy --ignore-pipfile || exit 1
+# Install dependencies from Pipfile
+pipenv install --system
 
-# Jalankan langkah tambahan build jika diperlukan
-# Contohnya, kumpulkan berkas statis
-pipenv run python manage.py collectstatic || exit 1
+# Collect static files (adjust command as needed)
+python3 manage.py collectstatic
+
+# Run Django application (adjust command as needed)
+python3 wsgi.py
